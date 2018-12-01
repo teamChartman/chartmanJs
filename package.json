@@ -1,0 +1,38 @@
+{
+  "name": "chartmanjs",
+  "version": "1.0.0",
+  "description": "this is application for Jmeter result analysis",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rrpofficial/chartmanJs.git"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "config": "^2.0.1",
+    "express": "^4.16.3",
+    "fawn": "^2.1.5",
+    "joi": "^13.6.0",
+    "joi-objectid": "^2.0.0",
+    "jsonwebtoken": "^8.3.0",
+    "lodash": "^4.17.11",
+    "mongoose": "^5.2.17",
+    "passport": "^0.4.0",
+    "passport-jwt": "^4.0.0"
+  },
+  "devDependencies": {
+    "cors": "^2.8.4"
+  },
+  "keywords": [
+    "chartman"
+  ],
+  "author": "chartmanTeam",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rrpofficial/chartmanJs/issues"
+  },
+  "homepage": "https://github.com/rrpofficial/chartmanJs#readme"
+}
