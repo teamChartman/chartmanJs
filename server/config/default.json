@@ -1,3 +1,6 @@
 {
-    "jwtPrivateKey" : ""
+    "jwtPrivateKey" : "",
+    "dbConfig": {
+        "connectUrl" : "mongodb://localhost:27017/dbchartman"
+      }
 }
