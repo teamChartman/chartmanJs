@@ -14,9 +14,7 @@ const express = require('express'),
     app = express(),
     path = require('path'),
     port = 3000;
-    db_host = config.get('dbConfig.host');
-    db_port = config.get('dbConfig.port');
-    db_db = config.get('dbConfig.dbName');
+    dbUrl = config.get('dbConfig.connectUrl');
 
 
 const corsOptions = {
@@ -78,7 +76,7 @@ class Server {
     }
 
     initDB() {
-        mongoose.connect('mongodb://'+db_host+':'+db_port+'/'+db_db, { useNewUrlParser: true })
+        mongoose.connect(dbUrl, { useNewUrlParser: true })
             .then(() => { console.log('Connected to MongoDB') })
             .catch((err) => { console.log('Connection to database failed'); console.log(err) });
     }
