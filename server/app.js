@@ -14,6 +14,10 @@ const express = require('express'),
     app = express(),
     path = require('path'),
     port = 3000;
+    db_host = config.get('dbConfig.host');
+    db_port = config.get('dbConfig.port');
+    db_db = config.get('dbConfig.dbName');
+
 
 const corsOptions = {
     origin: "*",
@@ -40,7 +44,6 @@ class Server {
 
     initExpressMiddleWare() {
         //app.use(favicon(__dirname + '/public/assets/images/favicon.ico'));
-        app.use(express.static(__dirname + '/dist/web-app'));
         app.use(morgan('dev'));
         app.use(bodyParser.urlencoded({ extended: true }));
         app.use(bodyParser.json());
@@ -75,7 +78,7 @@ class Server {
     }
 
     initDB() {
-        mongoose.connect('mongodb://localhost:27017/dbchartman', { useNewUrlParser: true })
+        mongoose.connect('mongodb://'+db_host+':'+db_port+'/'+db_db, { useNewUrlParser: true })
             .then(() => { console.log('Connected to MongoDB') })
             .catch((err) => { console.log('Connection to database failed'); console.log(err) });
     }
@@ -85,39 +88,10 @@ class Server {
         routes.set(app);
         // redirect all others to the index (HTML5 history)
         app.all('/*', (req, res) => {        
-            res.sendFile(__dirname + '/../web-app/dist/web-app/index.html');
+            res.sendFile(__dirname + '/public/index.html');
         });
     }
 
 }
 
 let server = new Server();
-
-/*
-const routes = require("./routes")
-var corsOptions = {
-    origin: "*",
-    methods: "GET, HEAD, PUT, POST, DELETE",
-    allowHeaders: ["Content-Type", "Authorization", "x-auth-token", "ETag"],
-    ptionsSuccessStatus: 200
-};
-app.use(cors(corsOptions));
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
-app.use(errorhandler());
-app.use(cookieParser());
-routes.set(app);
-require("./init/db")();
-
-
-app.use(passport.initialize());
-app.use(passport.session());
-
-require("./middleware/passport")(passport);
-
-dist / web - app
-
-app.listen(3000, () => {
-    console.log("Server started");
-});
-*/
