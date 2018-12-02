@@ -6,8 +6,8 @@ const config = require('config');
 
 
 const router = express.Router();
-const { User } = require('../models/user.model');
-const { comparePwd } = require('../middleware/crypto')
+const { User } = require('../../models/user.model');
+const { comparePwd } = require('../../middleware/crypto')
 function validate(user){
     const schema = {
         email : Joi.string().min(5).max(255).required().email(),

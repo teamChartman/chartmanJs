@@ -1,11 +1,11 @@
-const { User, validate } = require('../models/user.model');
+const { User, validate } = require('../../models/user.model');
 const express = require('express');
 const passport = require('passport');
 const router = express.Router();
 
 const _ = require('lodash');
 
-const { getEncryptedPwd }  = require('../middleware/crypto');
+const { getEncryptedPwd }  = require('../../middleware/crypto');
 
 router.get('/', async (req, res)=>{
    const users = await User

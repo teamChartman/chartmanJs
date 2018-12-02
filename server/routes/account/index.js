@@ -7,8 +7,5 @@ module.exports = function(app){
     app.use("/api/auth", auth);
     app.use("/api/users", users);
     app.use("/api/account", account);
-    app.use("/api/account/change-password", changePassword);
-    app.get("/", (req, res)=>{
-        res.send("Home")
-    });
+    app.use("/api/account/change-password", changePassword);    
 }

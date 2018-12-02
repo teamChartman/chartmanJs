@@ -1,11 +1,11 @@
-const { User, validate } = require('../models/user.model');
+const { User, validate } = require('../../models/user.model');
 const passport = require('passport');
 const express = require('express');
 const router = express.Router();
 const _ = require('lodash');
 const jwt = require('jsonwebtoken');
 const config = require('config');
-const { getEncryptedPwd, comparePwd}  = require('../middleware/crypto');
+const { getEncryptedPwd, comparePwd}  = require('../../middleware/crypto');
 
 router.post('/', passport.authenticate('jwt', {session: false}),  async (req, res)=>{
     // const {error} = validate(req.body);
