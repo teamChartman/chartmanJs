@@ -2,20 +2,20 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { NgbDateAdapter } from '@ng-bootstrap/ng-bootstrap';
 
 import { NgbDateMomentAdapter } from './util/datepicker-adapter';
-import { DemoSharedLibsModule, DemoSharedCommonModule, JhiLoginModalComponent, HasAnyAuthorityDirective } from './';
+import { CMSharedLibsModule, CMSharedCommonModule, JhiLoginModalComponent, HasAnyAuthorityDirective } from './';
 
 @NgModule({
-    imports: [DemoSharedLibsModule, DemoSharedCommonModule],
+    imports: [CMSharedLibsModule, CMSharedCommonModule],
     declarations: [JhiLoginModalComponent, HasAnyAuthorityDirective],
     providers: [{ provide: NgbDateAdapter, useClass: NgbDateMomentAdapter }],
     entryComponents: [JhiLoginModalComponent],
-    exports: [DemoSharedCommonModule, JhiLoginModalComponent, HasAnyAuthorityDirective],
+    exports: [CMSharedCommonModule, JhiLoginModalComponent, HasAnyAuthorityDirective],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class DemoSharedModule {
+export class CMSharedModule {
     static forRoot() {
         return {
-            ngModule: DemoSharedModule
+            ngModule: CMSharedModule
         };
     }
 }

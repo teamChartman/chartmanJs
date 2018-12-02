@@ -27,7 +27,7 @@ import { JHI_PIPES, JHI_DIRECTIVES, JHI_COMPONENTS } from './jhi-components';
         DatePipe
     ]
 })
-export class DemoCoreModule {
+export class CMCoreModule {
     constructor() {
         registerLocaleData(locale);
     }
