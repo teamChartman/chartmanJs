@@ -12,6 +12,7 @@ const express = require('express'),
     mongoose = require('mongoose'),
     cors = require('cors'),
     app = express(),
+    path = require('path'),
     port = 3000;
 
 const corsOptions = {
@@ -44,14 +45,15 @@ class Server {
         app.use(bodyParser.urlencoded({ extended: true }));
         app.use(bodyParser.json());
         app.use(errorhandler());
-        app.use(csrf({ cookie: true }));
+        app.use('/', express.static(path.join(__dirname, '/public')))
+        //app.use(csrf({ cookie: true }));
         app.use(cors(corsOptions));
-        app.use((req, res, next) => {
+        /*app.use((req, res, next) => {
             let csrfToken = req.csrfToken();
             res.locals._csrf = csrfToken;
             res.cookie('XSRF-TOKEN', csrfToken);
             next();
-        });
+        });*/
 
         process.on('uncaughtException', (err) => {
             if (err) console.log(err, err.stack);
@@ -82,8 +84,8 @@ class Server {
     initRoutes() {
         routes.set(app);
         // redirect all others to the index (HTML5 history)
-        app.all('/*', (req, res) => {
-            res.sendFile(__dirname + '/dist/web-app/index.html');
+        app.all('/*', (req, res) => {        
+            res.sendFile(__dirname + '/../web-app/dist/web-app/index.html');
         });
     }
 

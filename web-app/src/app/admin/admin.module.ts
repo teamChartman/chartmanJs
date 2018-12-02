@@ -10,9 +10,11 @@ import {
     UserMgmtUpdateComponent,
     UserMgmtDeleteDialogComponent,
 } from './';
+import { CMCoreModule } from 'app/core';
 
 @NgModule({
     imports: [
+        CMCoreModule,
         CMSharedModule,
         RouterModule.forChild(adminState)
         /* jhipster-needle-add-admin-module - JHipster will add admin modules here */
