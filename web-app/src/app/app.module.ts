@@ -10,12 +10,12 @@ import { AuthInterceptor } from './blocks/interceptor/auth.interceptor';
 import { AuthExpiredInterceptor } from './blocks/interceptor/auth-expired.interceptor';
 import { ErrorHandlerInterceptor } from './blocks/interceptor/errorhandler.interceptor';
 import { NotificationInterceptor } from './blocks/interceptor/notification.interceptor';
-import { DemoSharedModule } from './shared';
-import { DemoCoreModule } from './core';
+import { CMSharedModule } from './shared';
+import { CMCoreModule } from './core';
 import { AppRoutesModule } from './app-routing.module';
-import { DemoHomeModule } from './home/home.module';
-import { DemoAccountModule } from './account/account.module';
-import { DemoEntityModule } from './entities/entity.module';
+import { CMHomeModule } from './home/home.module';
+import { CMAccountModule } from './account/account.module';
+import { CMEntityModule } from './entities/entity.module';
 import * as moment from 'moment';
 // jhipster-needle-angular-add-module-import JHipster will add new module here
 import { JhiMainComponent, NavbarComponent, FooterComponent, PageRibbonComponent, ErrorComponent } from './layouts';
@@ -25,12 +25,12 @@ import { JhiMainComponent, NavbarComponent, FooterComponent, PageRibbonComponent
         BrowserModule,
         AppRoutesModule,
         Ng2Webstorage.forRoot({ prefix: 'jhi', separator: '-' }),        
-        DemoSharedModule.forRoot(),
-        DemoCoreModule,
-        DemoHomeModule,
-        DemoAccountModule,
+        CMSharedModule.forRoot(),
+        CMCoreModule,
+        CMHomeModule,
+        CMAccountModule,
         // jhipster-needle-angular-add-module JHipster will add new module here
-        DemoEntityModule
+        CMEntityModule
     ],
     declarations: [JhiMainComponent, NavbarComponent, ErrorComponent, PageRibbonComponent, FooterComponent],
     providers: [
