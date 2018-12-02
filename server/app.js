@@ -13,8 +13,10 @@ const express = require('express'),
     cors = require('cors'),
     app = express(),
     path = require('path'),
-    port = 3000;
+    port = 3000,
     dbUrl = config.get('dbConfig.connectUrl');
+    const {User} = require('./models/user.model');
+    
 
 
 const corsOptions = {
@@ -67,6 +69,7 @@ class Server {
         let opts = {}
         opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
         opts.secretOrKey = config.jwtPrivateKey;
+        //const User = User;
         passport.use(new JwtStrategy(opts, async (jwt_payload, done) => {
             const user = await User.findById(jwt_payload._id);
             if (!user) done('Something is wrong', false);
