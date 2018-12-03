@@ -25,7 +25,7 @@ router.get('/:id', async (req, res)=>{
  });
  
 
-router.post('/', passport.authenticate('jwt', {session: false}), async (req, res)=>{
+router.post('/', async (req, res)=>{
     const {error} = validate(req.body);
     if(error) return res.status(400).send(error.details[0].message);
     let user = await User.findOne({'email' : req.body.email});
@@ -34,7 +34,10 @@ router.post('/', passport.authenticate('jwt', {session: false}), async (req, res
     user = new User({
         name : req.body.name,
         email : req.body.email,
-        password : req.body.password
+        password : req.body.password,
+        authorities: req.body.authorities,
+        activated: req.body.activated,
+        imageUrl: req.body.activated
     });
 
     user.password = await getEncryptedPwd(req.body.password);
