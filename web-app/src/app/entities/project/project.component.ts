@@ -1,14 +1,18 @@
+import { JhiAlertService, JhiEventManager, JhiParseLinks } from './../../jhi/';
+
+import { Principal } from './../../core/auth/principal.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { HttpErrorResponse, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { JhiEventManager, JhiParseLinks, JhiAlertService } from '../../core';
+//import { JhiEventManager, JhiParseLinks, JhiAlertService } from '../../core';
 
 import { IProject } from 'app/shared/model/project.model';
-import { Principal } from 'app/core';
+//import { Principal } from 'app/core';
 
 import { ITEMS_PER_PAGE } from 'app/shared';
 import { ProjectService } from './project.service';
+
 
 @Component({
     selector: 'jhi-project',

@@ -1,5 +1,7 @@
+import { JhiEventManager } from './../../jhi/service/event-manager.service';
+import { JhiAlertService } from './../../jhi/service/alert.service';
 import { Component, OnDestroy } from '@angular/core';
-import { JhiEventManager, JhiAlertService } from '../../core';
+
 import { Subscription } from 'rxjs';
 
 @Component({

@@ -28,8 +28,8 @@
     <div class="table-responsive" *ngIf="projects">
         <table class="table table-striped">
             <thead>
-                <!--  jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="reset.bind(this)" -->
-            <tr>
+                <!--  [(predicate)]="predicate" [(ascending)]="reverse" [callback]="reset.bind(this)"  -->
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="reset.bind(this)">
             <th jhiSortBy="id"><span>ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="name"><span>Name</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="description"><span>Description</span> <fa-icon [icon]="'sort'"></fa-icon></th>

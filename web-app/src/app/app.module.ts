@@ -1,3 +1,5 @@
+import { NgJhipsterModule } from './jhi/jhipster.module';
+
 import './vendor.ts';
 
 import { NgModule } from '@angular/core';
@@ -29,6 +31,11 @@ import { AppComponent } from './app.component';
         CMSharedModule.forRoot(),
         CMCoreModule,
         CMHomeModule,
+        NgJhipsterModule.forRoot({
+            // set below to true to make alerts look like toast
+            alertAsToast: false,
+            alertTimeout: 5000
+        }),
         CMAccountModule,
         // jhipster-needle-angular-add-module JHipster will add new module here
         CMEntityModule

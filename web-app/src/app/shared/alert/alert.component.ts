@@ -1,5 +1,6 @@
+import { JhiAlertService } from './../../jhi/service/alert.service';
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { JhiAlertService } from '../../core';
+
 
 @Component({
     selector: 'jhi-alert',

@@ -6,7 +6,7 @@ import { CMProjectModule } from './project/project.module';
 @NgModule({
     // prettier-ignore
     imports: [        
-        CMProjectModule
+        CMProjectModule        
         /* jhipster-needle-add-entity-module - JHipster will add entity modules here */
     ],
     declarations: [],

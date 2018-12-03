@@ -16,13 +16,13 @@
  See the License for the specific language governing permissions and
  limitations under the License.
  */
-import { Directive, Input, Output, Renderer, EventEmitter, ElementRef } from '@angular/core';
+import { Directive, Input, Output, Renderer, EventEmitter, ElementRef, AfterViewInit } from '@angular/core';
 import { JhiConfigService } from '../config.service';
 
 @Directive({
     selector: '[jhiSort]'
 })
-export class JhiSortDirective {
+export class JhiSortDirective implements AfterViewInit{
     @Input() predicate: string;
     @Input() ascending: boolean;
     @Input() callback: Function;
@@ -44,6 +44,9 @@ export class JhiSortDirective {
         this.sortAscIcon = config.sortAscIcon;
         this.sortDescIcon = config.sortDescIcon;
         this.sortIconSelector = config.sortIconSelector;
+    }
+
+    ngAfterViewInit(): void {        
     }
 
     sort(field: any) {

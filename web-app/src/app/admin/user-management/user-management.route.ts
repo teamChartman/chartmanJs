@@ -1,6 +1,8 @@
+import { JhiResolvePagingParams } from './../../jhi/service/resolve-paging-params.service';
+import { JhiPaginationUtil } from './../../jhi/service/pagination-util.service';
 import { Injectable } from '@angular/core';
 import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot, Routes, CanActivate } from '@angular/router';
-import { JhiPaginationUtil, JhiResolvePagingParams } from '../../core';
+
 
 import { Principal, User, UserService } from '../../core';
 import { UserMgmtComponent } from './user-management.component';

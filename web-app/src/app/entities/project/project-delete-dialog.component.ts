@@ -1,8 +1,9 @@
+import { JhiEventManager } from './../../jhi/service/event-manager.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { NgbActiveModal, NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
-import { JhiEventManager } from '../../core';
+
 
 import { IProject } from 'app/shared/model/project.model';
 import { ProjectService } from './project.service';

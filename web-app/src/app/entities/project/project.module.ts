@@ -1,3 +1,4 @@
+import { NgJhipsterModule } from './../../jhi/jhipster.module';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CMSharedModule } from '../../shared/';
@@ -16,7 +17,7 @@ import {
 const ENTITY_STATES = [...projectRoute, ...projectPopupRoute];
 
 @NgModule({
-    imports: [CMSharedModule, RouterModule.forChild(ENTITY_STATES)],
+    imports: [CMSharedModule, NgJhipsterModule, RouterModule.forChild(ENTITY_STATES)],
     declarations: [
         ProjectComponent,
         ProjectDetailComponent,

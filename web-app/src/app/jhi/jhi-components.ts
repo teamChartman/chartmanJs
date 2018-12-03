@@ -24,7 +24,7 @@ import {
     JhiPureFilterPipe,
     JhiTruncateCharactersPipe,
     JhiTruncateWordsPipe
-} from './';
+} from './pipe';
 import {
     JhiMaxValidatorDirective,
     JhiMinValidatorDirective,
@@ -32,7 +32,7 @@ import {
     JhiMinbytesValidatorDirective,
     JhiSortDirective,
     JhiSortByDirective
-} from './';
+} from './directive';
 import {
     JhiItemCountComponent
 } from './component/jhi-item-count.component';
