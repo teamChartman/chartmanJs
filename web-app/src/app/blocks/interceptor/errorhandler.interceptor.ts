@@ -1,5 +1,5 @@
+import { JhiEventManager } from './../../jhi/service/event-manager.service';
 import { Injectable } from '@angular/core';
-import { JhiEventManager } from '../../core';
 import { HttpInterceptor, HttpRequest, HttpErrorResponse, HttpHandler, HttpEvent } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';

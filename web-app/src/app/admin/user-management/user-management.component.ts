@@ -1,9 +1,11 @@
+import { JhiAlertService } from './../../jhi/service/alert.service';
+import { JhiParseLinks } from './../../jhi/service/parse-links.service';
+import { JhiEventManager } from './../../jhi/service/event-manager.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { HttpResponse } from '@angular/common/http';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 import { ActivatedRoute, Router } from '@angular/router';
-import { JhiEventManager, JhiParseLinks, JhiAlertService } from '../../core';
 
 import { ITEMS_PER_PAGE } from '../../shared';
 import { Principal, UserService, User } from '../../core';

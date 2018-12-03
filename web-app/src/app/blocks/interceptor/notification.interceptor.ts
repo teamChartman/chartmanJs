@@ -1,4 +1,5 @@
-import { JhiAlertService } from '../../core';
+import { JhiAlertService } from './../../jhi/service/alert.service';
+
 import { HttpInterceptor, HttpRequest, HttpResponse, HttpHandler, HttpEvent } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';

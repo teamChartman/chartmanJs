@@ -23,11 +23,11 @@ const userSchema = new mongoose.Schema(
         },
         activated : {
             type : Boolean,
-            'default' : true
+            default : true
         },
         authorities : {
             type : Array,
-            'default' : ['ROLE_USER']
+            default : ['ROLE_USER']
         },
         imageUrl : String
 }
@@ -38,6 +38,9 @@ function validateUser(user){
         name : Joi.string().min(5).max(50).required(),
         email : Joi.string().min(5).max(255).required().email(),
         password : Joi.string().min(8).max(1024).required(),
+        activated : Joi.boolean(),
+        authorities : Joi.array(),
+        imageUrl : Joi.string()
         // isAdmin : Joi.boolean()
     }
     return Joi.validate(user, schema);
