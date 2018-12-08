@@ -30,8 +30,8 @@
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" for="field_description">Description</label>
-                    <input type="text" class="form-control" name="description" id="field_description"
-                        [(ngModel)]="project.description" maxlength="400"/>
+                    <textarea  rows="4" class="form-control" name="description" id="field_description"
+                        [(ngModel)]="project.description" maxlength="400"></textarea>
                     <div [hidden]="!(editForm.controls.description?.dirty && editForm.controls.description?.invalid)">
                         <small class="form-text text-danger"
                         [hidden]="!editForm.controls.description?.errors?.maxlength">
@@ -51,20 +51,20 @@
                         />
                     </div>
                 </div>
-                <div class="form-group">
+                <!-- <div class="form-group">
                     <label class="form-control-label" for="field_createdDate">Created Date</label>
                     <div class="d-flex">
                         <input id="field_createdDate" type="datetime-local" class="form-control" name="createdDate" [(ngModel)]="createdDate"
                         />
                     </div>
-                </div>
-                <div class="form-group">
+                </div> -->
+                <!-- <div class="form-group">
                     <label class="form-control-label" for="field_updatedDate">Updated Date</label>
                     <div class="d-flex">
                         <input id="field_updatedDate" type="datetime-local" class="form-control" name="updatedDate" [(ngModel)]="updatedDate"
                         />
                     </div>
-                </div>
+                </div> -->
                 <div class="form-group">
                     <label class="form-control-label" for="field_endDate">End Date</label>
                     <div class="d-flex">
@@ -72,16 +72,16 @@
                         />
                     </div>
                 </div>
-                <div class="form-group">
+                <!-- <div class="form-group">
                     <label class="form-control-label" for="field_createdBy">Created By</label>
                     <input type="text" class="form-control" name="createdBy" id="field_createdBy"
                         [(ngModel)]="project.createdBy" />
-                </div>
-                <div class="form-group">
+                </div> -->
+                <!-- <div class="form-group">
                     <label class="form-control-label" for="field_updatedBy">Updated By</label>
                     <input type="text" class="form-control" name="updatedBy" id="field_updatedBy"
                         [(ngModel)]="project.updatedBy" />
-                </div>
+                </div> -->
 
             </div>
             <div>

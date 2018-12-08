@@ -41,7 +41,6 @@ function validateUser(user){
         activated : Joi.boolean(),
         authorities : Joi.array(),
         imageUrl : Joi.string()
-        // isAdmin : Joi.boolean()
     }
     return Joi.validate(user, schema);
 }

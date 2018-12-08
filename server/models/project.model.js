@@ -1,14 +1,57 @@
 const mongoose = require('mongoose');
 const Joi = require('joi');
-const projectSchema = new mongoose.Schema({});
+const projectSchema = new mongoose.Schema({
+    name : {
+        type : String,
+        minlength : 6,
+        maxlength : 100,
+        unique : true
+    },
+	description : {
+       type : String,
+       minlength : 6,
+       maxlength : 400
+    },
+	createdDate : {
+        type : Date
+    },
+    startDate : {
+       type : Date,
+       required : true
+    },
+	endDate : {
+        type : Date,
+        required : true
+    },
+    updatedDate :{
+        type : Date
+    },
+	active : {
+        type: Boolean,
+        default : true,
+        required : true
+    },
+    createdBy :{
+        type : String
+    },
+    updatedBy :{
+        type : String
+    }
+});
+
 
 
 function validateProject(project){
     const schema = {
-        // name : Joi.string().min(5).max(50).required(),
-        // email : Joi.string().min(5).max(255).required().email(),
-        // password : Joi.string().min(8).max(1024).required(),
-        // isAdmin : Joi.boolean()
+        name : Joi.string().min(5).max(50).required(),
+        description : Joi.string().min(5).max(450),
+        createdDate : Joi.date().allow(null),
+        active : Joi.boolean(),
+        startDate : Joi.date(),
+        endDate : Joi.date(),
+        updatedDate : Joi.date().allow(null),
+        createdBy : Joi.string(),
+        updatedBy : Joi.string().allow('').allow(null)
     }
     return Joi.validate(project, schema);
 }
