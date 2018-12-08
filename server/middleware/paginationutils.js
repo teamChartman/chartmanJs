@@ -16,8 +16,8 @@ exports.createPaging = function (req, res, next) {
     req.paging = {};
     //{ field: 'asc', test: -1 }
     // ["score, asc","id"]
-    query["size"] && (req.paging["limit"] = query["size"]);
-    query["page"] && (req.paging["page"] = query["page"]);
+    query["size"] && (req.paging["limit"] = Number(query["size"]));
+    query["page"] && (req.paging["page"] = Number(query["page"])+1);
     query["sort"] && (req.paging["sort"] = query["sort"]);
     next();
 };
