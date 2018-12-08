@@ -46,11 +46,14 @@ exports.createPaging = function (req, res, next) {
     var url_parts = url.parse(req.url, true);
     var query = url_parts.query;
     req.paging = {};
-    //{ field: 'asc', test: -1 }
-    // ["score, asc","id"]
     query["size"] && (req.paging["limit"] = Number(query["size"]));
     query["page"] && (req.paging["page"] = Number(query["page"]) + 1);
-    query["sort"] && (req.paging["sort"] = query["sort"]);
+    query["sort"] && (req.paging["sort"] = (function () {
+        let sorting = query["sort"].split(",");
+        if (sorting[1] == 'asc')
+            return sorting[0];
+        return '-' + sorting[0];
+    })());
     next();
 };
 
