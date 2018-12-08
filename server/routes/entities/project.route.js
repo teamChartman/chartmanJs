@@ -14,7 +14,7 @@ router.get('/', loginRequired, async (req, res) => {
     // console.log(req.paging);
     const response = await Project.paginate({}, req.paging);
 
-    generatePaginationHttpHeaders(res, response);
+    generatePaginationHttpHeaders(req, res, response);
     res.send(response.docs);
 
     // , function (err, result) {
