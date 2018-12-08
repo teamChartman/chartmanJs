@@ -14,9 +14,10 @@ const express = require('express'),
     app = express(),
     path = require('path'),
     port = 3000,
-    dbUrl = config.get('dbConfig.connectUrl');
-    const {User} = require('./models/user.model');
-    
+    extractUser = require('./middleware/jwt').extractUser
+dbUrl = config.get('dbConfig.connectUrl');
+const { User } = require('./models/user.model');
+
 
 
 const corsOptions = {
@@ -47,6 +48,7 @@ class Server {
         app.use(morgan('dev'));
         app.use(bodyParser.urlencoded({ extended: true }));
         app.use(bodyParser.json());
+        app.use(extractUser);
         app.use(errorhandler());
         app.use('/', express.static(path.join(__dirname, '/public')))
         //app.use(csrf({ cookie: true }));
@@ -88,7 +90,7 @@ class Server {
     initRoutes() {
         routes.set(app);
         // redirect all others to the index (HTML5 history)
-        app.all('/*', (req, res) => {        
+        app.all('/*', (req, res) => {
             res.sendFile(__dirname + '/public/index.html');
         });
     }
