@@ -22,14 +22,14 @@ exports.generatePaginationHttpHeaders = function (req, res, result) {
     }
     // last and first link
     let lastPage = 0;
-    if (page.getTotalPages() > 0) {
-        lastPage = page.getTotalPages() - 1;
+    if (totalPages > 0) {
+        lastPage = totalPages - 1;
     }
     link += "<" + generateUri(baseUrl, lastPage, pageSize) + ">; rel=\"last\",";
     link += "<" + generateUri(baseUrl, 0, pageSize) + ">; rel=\"first\"";
-    res.header('link', link);
+    res.header('Link', link);
     res.header('X-Total-Count', total);
-    return headers;
+    return res.headers;
 
     function generateUri(baseUrl, page, size) {
         return buildUrl(baseUrl, {
