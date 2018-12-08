@@ -4,25 +4,10 @@ const router = express.Router();
 const passport = require('passport');
 const jwt = require('jsonwebtoken');
 const config = require('config');
+const loginRequired = require('../../middleware/jwt').loginRequired;
 
-router.get('/', passport.authenticate('jwt', {session: false}), (req, res)=>{
-    
-    
-    if(!req.headers.authorization){
-       return res.status(500).send("Something went wrong"); 
-      }
-        
-    const authorization = req.headers.authorization;
-    let decoded;
-    try {
-        decoded = jwt.verify(authorization.split(' ')[1], config.get('jwtPrivateKey'));
-    } catch (e) {
-        return res.status(401).send('unauthorized');
-    }
-    res.send(decoded);
-    
-    
-
+router.get('/', loginRequired, (req, res)=>{
+    res.send(req.user);  //req.user is attached by extractUser Middleware function
 });
 
 module.exports=router;
