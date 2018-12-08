@@ -7,7 +7,9 @@ exports.generatePaginationHttpHeaders = function (req, res, result) {
     // result.total
     // result.limit - 10
     // result.offset - 20
-    let baseUrl = (req.secure ? 'http://' : 'http://') + req.headers.host + url.parse(req.url).pathname;
+    // const reqUrl = url.parse(req.baseUrl).pathname;
+    // console.log('the request is ', reqUrl);
+    let baseUrl = (req.secure ? 'http://' : 'http://') + req.headers.host + url.parse(req.baseUrl).pathname;
     let total = result.total;
     let pageSize = req.paging["limit"];
     let totalPages = Math.ceil(result.total / pageSize);
@@ -49,10 +51,22 @@ exports.createPaging = function (req, res, next) {
     query["size"] && (req.paging["limit"] = Number(query["size"]));
     query["page"] && (req.paging["page"] = Number(query["page"]) + 1);
     query["sort"] && (req.paging["sort"] = (function () {
-        let sorting = query["sort"].split(",");
-        if (sorting[1] == 'asc')
-            return sorting[0];
-        return '-' + sorting[0];
+        // console.log("the type of sort is", typeof(query["sort"]));
+        // if(typeof(query["sort"]) != "string")
+        //     console.log(query["sort"].toString());
+
+        if(typeof(query["sort"]) === "string") {
+            let sorting = query["sort"].split(",");
+            if (sorting[1] == 'asc')
+                return sorting[0];
+            return '-' + sorting[0];
+        }else{
+            let sorting = query["sort"].toString().split(",");
+            if (sorting[1] == 'asc')
+                return sorting[0];
+          return '-' + sorting[0];
+        }
+        
     })());
     next();
 };
