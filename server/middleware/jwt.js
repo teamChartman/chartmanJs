@@ -1,5 +1,4 @@
 const jwt = require('jsonwebtoken');
-const config = require('config');
 
 exports.loginRequired = function (req, res, next) {
     if (req.user) {

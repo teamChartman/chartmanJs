@@ -1,16 +1,29 @@
 const express = require('express');
 const router = express.Router();
 const { Project, validate } = require('../../models/project.model');
-const loginRequired = require('../../middleware/jwt').loginRequired
+const loginRequired = require('../../middleware/jwt').loginRequired;
+const generatePaginationHttpHeaders = require("../../middleware/paginationutils").generatePaginationHttpHeaders;
 /*
  * GET
  */
 router.get('/', loginRequired, async (req, res) => {
-    const project = await Project
+    /*const project = await Project
+        .paginate(req.paging)
         .find()
-        .sort({ 'name': 1 });
+        .sort({ 'name': 1 });*/
 
-    res.send(project);
+    const response = await Project.paginate({}, req.paging);
+    generatePaginationHttpHeaders(res, response);
+    res.send(response.docs);
+
+    // , function (err, result) {
+    //     // result.docs
+    //     // result.total
+    //     // result.limit - 10
+    //     // result.offset - 20
+
+    // }
+
 });
 
 /*

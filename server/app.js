@@ -14,8 +14,9 @@ const express = require('express'),
     app = express(),
     path = require('path'),
     port = 3000,
-    extractUser = require('./middleware/jwt').extractUser
-dbUrl = config.get('dbConfig.connectUrl');
+    extractUser = require('./middleware/jwt').extractUser,
+    createPaging = require('./middleware/paginationutils').createPaging,
+    dbUrl = config.get('dbConfig.connectUrl');
 const { User } = require('./models/user.model');
 
 
@@ -49,6 +50,7 @@ class Server {
         app.use(bodyParser.urlencoded({ extended: true }));
         app.use(bodyParser.json());
         app.use(extractUser);
+        app.use(createPaging);
         app.use(errorhandler());
         app.use('/', express.static(path.join(__dirname, '/public')))
         //app.use(csrf({ cookie: true }));
