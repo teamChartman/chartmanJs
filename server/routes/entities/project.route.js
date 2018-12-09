@@ -7,24 +7,25 @@ const generatePaginationHttpHeaders = require("../../middleware/paginationutils"
  * GET
  */
 router.get('/', loginRequired, async (req, res) => {
-    /*const project = await Project
-        .paginate(req.paging)
-        .find()
-        .sort({ 'name': 1 });*/
-    console.log(req.paging);
     const response = await Project.paginate({}, req.paging);
-
     generatePaginationHttpHeaders(req, res, response);
     res.send(response.docs);
+});
 
-    // , function (err, result) {
-    //     // result.docs
-    //     // result.total
-    //     // result.limit - 10
-    //     // result.offset - 20
-
-    // }
-
+/*
+ * GET
+ */
+router.get('/_search', loginRequired, async (req, res) => {
+    const response = await Project.paginate(getQuery(), req.paging);
+    generatePaginationHttpHeaders(req, res, response);
+    res.send(response.docs);
+    function getQuery() {
+        if (req.query.query)
+            return {
+                $text: { $search: req.query.query }
+            }
+        return {};
+    }
 });
 
 /*

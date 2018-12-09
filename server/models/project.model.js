@@ -55,5 +55,16 @@ function validateProject(project) {
     }
     return Joi.validate(project, schema);
 }
+projectSchema.index({
+    name: 'text',
+    description: 'text',
+    createdBy: 'text'
+}, {
+        weights: {
+            name: 5,
+            createdBy: 4,
+            description: 1,
+        },
+    });
 exports.Project = mongoose.model('Project', projectSchema);
 exports.validate = validateProject;

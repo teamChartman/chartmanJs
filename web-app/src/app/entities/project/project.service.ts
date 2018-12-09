@@ -15,9 +15,9 @@ type EntityArrayResponseType = HttpResponse<IProject[]>;
 @Injectable({ providedIn: 'root' })
 export class ProjectService {
     public resourceUrl = SERVER_API_URL + 'api/projects';
-    public resourceSearchUrl = SERVER_API_URL + 'api/_search/projects';
+    public resourceSearchUrl = SERVER_API_URL + 'api/projects/_search';
 
-    constructor(private http: HttpClient) {}
+    constructor(private http: HttpClient) { }
 
     create(project: IProject): Observable<EntityResponseType> {
         const copy = this.convertDateFromClient(project);
