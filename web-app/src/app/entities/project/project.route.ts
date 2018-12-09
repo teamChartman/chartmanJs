@@ -18,6 +18,7 @@ export class ProjectResolve implements Resolve<IProject> {
 
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Project> {
         const id = route.params['id'] ? route.params['id'] : null;
+        
         if (id) {
             return this.service.find(id).pipe(
                 filter((response: HttpResponse<Project>) => response.ok),

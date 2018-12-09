@@ -25,7 +25,7 @@ export class ProjectDeleteDialogComponent {
         this.projectService.delete(id).subscribe(response => {
             this.eventManager.broadcast({
                 name: 'projectListModification',
-                content: 'Deleted an project'
+                content: 'Deleted a project'
             });
             this.activeModal.dismiss(true);
         });
