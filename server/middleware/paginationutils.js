@@ -51,22 +51,12 @@ exports.createPaging = function (req, res, next) {
     query["size"] && (req.paging["limit"] = Number(query["size"]));
     query["page"] && (req.paging["page"] = Number(query["page"]) + 1);
     query["sort"] && (req.paging["sort"] = (function () {
-        // console.log("the type of sort is", typeof(query["sort"]));
-        // if(typeof(query["sort"]) != "string")
-        //     console.log(query["sort"].toString());
-
-        if(typeof(query["sort"]) === "string") {
-            let sorting = query["sort"].split(",");
+        (typeof (query["sort"]) === "string" ? [query["sort"]] : query["sort"]).map(element => {
+            let sorting = element.split(",");
             if (sorting[1] == 'asc')
                 return sorting[0];
             return '-' + sorting[0];
-        }else{
-            let sorting = query["sort"].toString().split(",");
-            if (sorting[1] == 'asc')
-                return sorting[0];
-          return '-' + sorting[0];
-        }
-        
+        });
     })());
     next();
 };
