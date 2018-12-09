@@ -30,7 +30,7 @@
             <thead>
                 <!--  [(predicate)]="predicate" [(ascending)]="reverse" [callback]="reset.bind(this)"  -->
             <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="reset.bind(this)">
-            <th jhiSortBy="id"><span>ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <!-- <th jhiSortBy="id"><span>ID</span> <fa-icon [icon]="'sort'"></fa-icon></th> -->
             <th jhiSortBy="name"><span>Name</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="description"><span>Description</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="active"><span>Active</span> <fa-icon [icon]="'sort'"></fa-icon></th>
@@ -45,8 +45,8 @@
             </thead>
             <tbody infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']" [infiniteScrollDistance]="0">
             <tr *ngFor="let project of projects ;trackBy: trackId">
-                <td><a [routerLink]="['/project', project.id, 'view' ]">{{project.id}}</a></td>
-                <td>{{project.name}}</td>
+                <!-- <td><a [routerLink]="['/project', project._id, 'view' ]">{{project._id}}</a></td> -->
+                <td><a [routerLink]="['/project', project._id, 'view' ]">{{project.name}}</a></td>
                 <td>{{project.description}}</td>
                 <td>{{project.active}}</td>
                 <td>{{project.startDate | date:'medium'}}</td>
@@ -58,19 +58,19 @@
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
                         <button type="submit"
-                                [routerLink]="['/project', project.id, 'view' ]"
+                                [routerLink]="['/project', project._id, 'view' ]"
                                 class="btn btn-info btn-sm">
                             <fa-icon [icon]="'eye'"></fa-icon>
                             <span class="d-none d-md-inline">View</span>
                         </button>
                         <button type="submit"
-                                [routerLink]="['/project', project.id, 'edit']"
+                                [routerLink]="['/project', project._id, 'edit']"
                                 class="btn btn-primary btn-sm">
                             <fa-icon [icon]="'pencil-alt'"></fa-icon>
                             <span class="d-none d-md-inline">Edit</span>
                         </button>
                         <button type="submit"
-                                [routerLink]="['/', { outlets: { popup: 'project/'+ project.id + '/delete'} }]"
+                                [routerLink]="['/', { outlets: { popup: 'project/'+ project._id + '/delete'} }]"
                                 replaceUrl="true"
                                 queryParamsHandling="merge"
                                 class="btn btn-danger btn-sm">
