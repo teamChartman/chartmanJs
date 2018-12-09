@@ -20,7 +20,7 @@ export class ProjectUpdateComponent implements OnInit {
     updatedDate: string;
     endDate: string;
 
-    constructor(private projectService: ProjectService, private activatedRoute: ActivatedRoute) {}
+    constructor(private projectService: ProjectService, private activatedRoute: ActivatedRoute) { }
 
     ngOnInit() {
         this.isSaving = false;
@@ -43,7 +43,7 @@ export class ProjectUpdateComponent implements OnInit {
         this.project.createdDate = this.createdDate != null ? moment(this.createdDate, DATE_TIME_FORMAT) : null;
         this.project.updatedDate = this.updatedDate != null ? moment(this.updatedDate, DATE_TIME_FORMAT) : null;
         this.project.endDate = this.endDate != null ? moment(this.endDate, DATE_TIME_FORMAT) : null;
-        if (this.project.id !== undefined) {
+        if (this.project._id !== undefined) {
             this.subscribeToSaveResponse(this.projectService.update(this.project));
         } else {
             this.subscribeToSaveResponse(this.projectService.create(this.project));

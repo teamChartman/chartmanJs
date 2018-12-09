@@ -29,7 +29,7 @@ export class ProjectService {
     update(project: IProject): Observable<EntityResponseType> {
         const copy = this.convertDateFromClient(project);
         return this.http
-            .put<IProject>(this.resourceUrl, copy, { observe: 'response' })
+            .put<IProject>(`${this.resourceUrl}/${project._id}`, copy, { observe: 'response' })
             .pipe(map((res: EntityResponseType) => this.convertDateFromServer(res)));
     }
 

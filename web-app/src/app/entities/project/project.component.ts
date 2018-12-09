@@ -45,7 +45,7 @@ export class ProjectComponent implements OnInit, OnDestroy {
         this.links = {
             last: 0
         };
-        this.predicate = 'id';
+        this.predicate = '_id';
         this.reverse = true;
         this.currentSearch =
             this.activatedRoute.snapshot && this.activatedRoute.snapshot.params['search']
@@ -97,7 +97,7 @@ export class ProjectComponent implements OnInit, OnDestroy {
             last: 0
         };
         this.page = 0;
-        this.predicate = 'id';
+        this.predicate = '_id';
         this.reverse = true;
         this.currentSearch = '';
         this.loadAll();
@@ -131,7 +131,7 @@ export class ProjectComponent implements OnInit, OnDestroy {
     }
 
     trackId(index: number, item: IProject) {
-        return item.id;
+        return item._id;
     }
 
     registerChangeInProjects() {
@@ -140,8 +140,8 @@ export class ProjectComponent implements OnInit, OnDestroy {
 
     sort() {
         const result = [this.predicate + ',' + (this.reverse ? 'asc' : 'desc')];
-        if (this.predicate !== 'id') {
-            result.push('id');
+        if (this.predicate !== '_id') {
+            result.push('_id');
         }
         return result;
     }

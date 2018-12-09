@@ -1,7 +1,7 @@
 import { Moment } from 'moment';
 
 export interface IProject {
-    id?: string;
+    _id?: string;
     name?: string;
     description?: string;
     active?: boolean;
@@ -15,7 +15,7 @@ export interface IProject {
 
 export class Project implements IProject {
     constructor(
-        public id?: string,
+        public _id?: string,
         public name?: string,
         public description?: string,
         public active?: boolean,
