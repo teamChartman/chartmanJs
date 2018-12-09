@@ -51,12 +51,12 @@ exports.createPaging = function (req, res, next) {
     query["size"] && (req.paging["limit"] = Number(query["size"]));
     query["page"] && (req.paging["page"] = Number(query["page"]) + 1);
     query["sort"] && (req.paging["sort"] = (function () {
-        (typeof (query["sort"]) === "string" ? [query["sort"]] : query["sort"]).map(element => {
+        return (typeof (query["sort"]) === "string" ? [query["sort"]] : query["sort"]).map(element => {
             let sorting = element.split(",");
             if (sorting[1] == 'asc')
                 return sorting[0];
             return '-' + sorting[0];
-        });
+        }).join(' ');
     })());
     next();
 };
