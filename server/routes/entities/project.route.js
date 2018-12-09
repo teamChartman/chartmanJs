@@ -16,15 +16,18 @@ router.get('/', loginRequired, async (req, res) => {
  * GET
  */
 router.get('/_search', loginRequired, async (req, res) => {
+    // console.log(getQuery());
     const response = await Project.paginate(getQuery(), req.paging);
     generatePaginationHttpHeaders(req, res, response);
     res.send(response.docs);
     function getQuery() {
-        if (req.query.query)
-            return {
-                $text: { $search: req.query.query }
-            }
-        return {};
+        searchQuery = req.query.query? { $text : { $search : req.query.query}} : {};
+        // if (req.query.query)
+        //     return {
+        //         $text: { $search: req.query.query }
+        //     }
+        // return {};
+        return searchQuery;
     }
 });
 
